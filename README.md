@@ -23,23 +23,25 @@ https://spring.io/guides/topicals/spring-boot-docker/
 ### Running Container
 
 docker build -t jenad88/currency-exchange-service:0.0.1-SNAPSHOT .
-docker run -p 8000:8000 --name=currency-exchange-service jenad88/currency-exchange-service:0.0.1-SNAPSHOT
-docker run -ti --entrypoint /bin/sh --name=currency-exchange-service jenad88/currency-exchange-service:0.0.1-SNAPSHOT
+
+docker run -p 8080:8080 --name=currency-exchange-service jenad88/currency-exchange-service:0.0.1-SNAPSHOT
+
+docker run -p 8080:8080 -ti --entrypoint /bin/sh --name=currency-exchange-service jenad88/currency-exchange-service:0.0.1-SNAPSHOT
 
 docker run --name=currency-exchange-service -ti --entrypoint /bin/sh jenad88/currency-exchange-service:0.0.1-SNAPSHOT
-docker exec -ti currency-exchange-service:0.0.1-SNAPSHOT /bin/sh
+docker exec -ti currency-exchange-service /bin/sh
 
 #### Basic
 ```
-docker container run --publish 8000:8000 --name=currency-exchange-service jenad88/currency-exchange-service:0.0.1-SNAPSHOT
+docker container run --publish 8080:8080 --name=currency-exchange-service jenad88/currency-exchange-service:0.0.1-SNAPSHOT
 ```
 #### Custom Network
 ```
-docker run --publish 8000:8000 --network currency-network --name=currency-exchange-service jenad88/currency-exchange-service:0.0.1-SNAPSHOT
+docker run --publish 8080:8080 --network currency-network --name=currency-exchange-service jenad88/currency-exchange-service:0.0.1-SNAPSHOT
 ```
 
 Test API
-- http://localhost:8000/api/currency-exchange-microservice/currency-exchange/from/USD/to/INR
+- http://localhost:8080/api/currency-exchange-microservice/currency-exchange/from/USD/to/INR
 
 ```
 docker login
@@ -48,7 +50,7 @@ docker push @@@REPO_NAME@@@/currency-exchange-service:0.0.1-SNAPSHOT
 
 ## Resources
 
-- http://localhost:8000/api/currency-exchange-microservice/currency-exchange/from/USD/to/INR
+- http://localhost:8080/api/currency-exchange-microservice/currency-exchange/from/USD/to/INR
 
 ```json
 {
@@ -62,7 +64,7 @@ docker push @@@REPO_NAME@@@/currency-exchange-service:0.0.1-SNAPSHOT
 
 ## H2 Console
 
-- http://localhost:8000/api/currency-exchange-microservice/h2-console
+- http://localhost:8080/api/currency-exchange-microservice/h2-console
 - Use `jdbc:h2:mem:testdb` as JDBC URL
 
 
