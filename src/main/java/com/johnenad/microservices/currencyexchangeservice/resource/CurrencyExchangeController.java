@@ -2,6 +2,7 @@ package com.johnenad.microservices.currencyexchangeservice.resource;
 
 import java.util.Map;
 
+import com.amazonaws.xray.spring.aop.XRayEnabled;
 import com.johnenad.microservices.currencyexchangeservice.util.containerservice.ContainerMetaDataService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@XRayEnabled
 public class CurrencyExchangeController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CurrencyExchangeController.class);
